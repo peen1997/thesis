@@ -1,0 +1,15 @@
+export const GET_FEEDBACKS = 'GET_FEEDBACKS';
+export const ADD_FEEDBACK = 'ADD_FEEBACK';
+export const DELETE_FEEDBACK = 'DELETE_FEEDBACK';
+export const FEEDBACKS_LOADING = 'FEEDBACLS_LOADING';
+export const ADMIN_LOADING = "ADMIN_LOADING";
+export const ADMIN_LOADED = "ADMIN_LOADED";
+export const AUTH_ERROR = "AUTH_ERROR";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
+export const GET_ERRORS = 'GET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const ADD_RESPONSE = 'ADD_RESPOSE';
