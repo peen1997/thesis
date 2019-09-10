@@ -12,8 +12,8 @@ export default function(state=initialState,action){
                 ...state,
                 
                 response : {
-                    ...state.response,
-                    response: [action.payload,...state.email]},   
+                    ...state,
+                    response: [action.payload,...state.response]},   
                 loading : false
             }
         default :

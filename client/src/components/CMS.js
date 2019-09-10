@@ -58,6 +58,7 @@ export class CMS extends Component {
         // FIXME something wrong here
         this.props.addResponse(emailResponse)
         this.toggle()
+        document.getElementById("my-form").reset()
 }
     // Close modal 
     onDeleteClick = id =>{
@@ -74,10 +75,10 @@ export class CMS extends Component {
             <div>
                 <Container>
                     <ListGroup> 
-                        <TransitionGroup className = 'feedback-list'>
-                            {feedbacks.map(({_id,name,feedback,student_ID,email})=>(
-                                <CSSTransition key = {_id} timeout = {500} className= 'fade'>
-                                    <ListGroupItem>
+                        
+                            {feedbacks.map(({_id,name,feedback,id,email,Sentiment_status})=>(
+                            
+                                    <ListGroupItem key = {_id} >
                                         {this.props.isAuthenticated?(
                                             <Button className = 'remove-btn' color = 'danger' size = 'sm' onClick = {this.onDeleteClick.bind(this,_id)} >
                                                 &times
@@ -85,13 +86,13 @@ export class CMS extends Component {
                                         
                                         {name}
                                         {feedback}
-                                        {student_ID}
+                                        {id}
                                         {email}
-                                        
+                                        {Sentiment_status}
                                     </ListGroupItem>
-                                </CSSTransition>
+                            
                             ))}
-                        </TransitionGroup>
+                        
                     </ListGroup>
                 
     

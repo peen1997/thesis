@@ -13,34 +13,23 @@ const API_key = require('../../config/API_Key').API_key
 Router.post('/', async (req,res)=>{
     let nlp = new NLP(API_key)
     //const sentimental = await applicationCache.find(req.body.feedback)
-    const sentiment_status = ''
-    await nlp.analyzeSentiment(req.body.feedback)
-        .then(sentiment=>{
-                let score = sentiment['documentSentiment']['score']
-                if (-1 <= score < -0.5)
-                    sentiment_status = "Very bad"
-    
-                if (-0.5 <= score <-0.25) 
-                    sentiment_status = "Bad"
-
-                if (-0.25 <= score < 0.25) 
-                    sentiment_status = "Neutral"
-
-                if (0.25 <= score < 0.75) 
-                    sentiment_status = "Good"
-
-                if (0.75 <= score <=1) 
-                    sentiment_status = "Execellent"   
-            })
-        .catch(err=>console.log(err))
+    // const sentiment_status = ''
+    // const score = await nlp.analyzeSentiment(req.body.feedback)
+    //     .then(sentiment=>{
+    //             console.log(sentiment['documentSentiment']['score'])
+    //             let update = {"$set":{"Sentiment_status":sentiment['documentSentiment']['score']}}
+    //             console.log(update)  
+    //         })
+    //     .catch(err=>console.log(err))
     const feedback = new Feedback({
         name : req.body.name,
         id : req.body.id,
         email : req.body.email,
         feedback : req.body.feedback,
-        Sentiment_status : sentiment_status
+        Sentiment_status : await nlp.analyzeSentiment(req.body.feedback).then(sentiment=>{return sentiment['documentSentiment']['score']}).catch(err=>console.log(err))
     })
-    feedback.save()
+    await feedback.save()
+    // feedback.findOneAndUpdate({_id:feedback._id},update)
     // const feedback = await feedback.save()
     // await Feedback.updateOne({id: feedback.id}, {sentimental: 'sentimental'})
         .then(feedback => res.json(feedback))
