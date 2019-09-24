@@ -25,14 +25,16 @@ import PropTypes from 'prop-types'
 import {getFeedbacks,deleteFeedback} from '../actions/feedbackAction'
 import {addResponse} from '../actions/responseActions'
 import {CSSTransition,TransitionGroup} from 'react-transition-group'
+import Logout from "./auth/Logout"
 
 
 export class CMS extends Component {
     state = {
-        CollapseOpen : false , 
+        modal : false , 
         email : '',
         response : '',
-        response_id : ''
+        response_id : '',
+        countID : 0
     }
     static propTypes = {
         isAuthenticated : PropTypes.bool,
@@ -40,9 +42,10 @@ export class CMS extends Component {
         getFeedbacks : PropTypes.func.isRequired,
         deleteFeedback : PropTypes.func.isRequired
     }
+ 
     toggle = ()=> {
         this.setState({
-        dropdownOpen : this.state.CollapseOpen
+        modal : !this.state.modal
         })
     }
     
@@ -51,7 +54,7 @@ export class CMS extends Component {
     }
     onSubmit = (e) =>{
         e.preventDefault()
-
+    
         const emailResponse = {
             response_id : this.state.response_id,
             email : this.state.email,
@@ -61,7 +64,7 @@ export class CMS extends Component {
         this.props.addResponse(emailResponse)
         this.toggle()
         document.getElementById("my-form").reset()
-}
+        }
     // Close modal 
     onDeleteClick = id =>{
         this.props.deleteFeedback(id)
@@ -69,24 +72,41 @@ export class CMS extends Component {
     componentDidMount(){
         this.props.getFeedbacks()
     }
+    
 
     render() {
         const {feedbacks} = this.props.feedback
         console.log({feedbacks})
+        console.log(this.props.feedback.feedbacks.length)
         return (
             <div>
                 <Container>
+                <div>
+                    <body >
+                    <h1>{this.props.feedback.feedbacks.length}</h1>   
+                    <tr >
+                        <th><img src="http://www.jscens.hcmut.edu.vn/img/BK.png" width="70" height="70"></img></th>
+                        <th><p style= {{fontSize :"150%",marginLeft :"20px",color:"#7094db"}}>STUDENT'S FEEDBACK TOOL</p>
+                            <p style= {{fontSize :"100%", marginLeft:"20px",color:"#0d0d0d"}}>Use AI to automatically classify sentiment</p>
+                        </th>
+                        <th >
+                            <Button color="primary" className='ml-auto'>{<Logout/>}</Button>
+                            
+                        </th>
+                    </tr>
+                    </body>
+                </div>
                     
                     <ListGroup> 
-                        
-                            {feedbacks.map(({_id,name,feedback,id,email,Sentiment_status,date})=>(
                             
+                            {feedbacks.map(({_id,name,feedback,id,email,Sentiment_status,date})=>(
+                                    
                                     <ListGroupItem key = {_id} >
                                         {this.props.isAuthenticated?(
                                             <Button className = 'remove-btn' color = 'danger' size = 'sm' onClick = {this.onDeleteClick.bind(this,_id)} >
                                                 x
                                             </Button>):null}
-                                        
+                                            
                                         {name}
                                         {feedback}
                                         {id}
@@ -100,6 +120,10 @@ export class CMS extends Component {
                             ))}
                     
                     </ListGroup>
+
+                    <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                    <ModalHeader toggle ={this.toggle}>Response to  feedback></ModalHeader>
+                    <ModalBody>
                     <Form onSubmit={this.onSubmit} id="my-form">
                     <FormGroup row>
                         <Label for = "email" sm={2}>EMAIL</Label>
@@ -118,8 +142,10 @@ export class CMS extends Component {
                     <Button>Submit</Button>
                         </Col>
                         </FormGroup>
-                    </Form >                       
-    
+                        
+                    </Form >     
+                    </ModalBody>                  
+                    </Modal>
                 </Container>
                 </div>
                 
