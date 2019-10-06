@@ -12,7 +12,7 @@ export default function(state=initialState,action){
                 ...state,
                 
                 response : {
-                    ...state,
+                    ...state.response,
                     response: [action.payload,...state.response]},   
                 loading : false
             }

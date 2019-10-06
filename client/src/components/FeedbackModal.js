@@ -77,26 +77,27 @@ class FeedbackModal extends Component {
                         </div>
                     </div>
                 </div>
+            
 
 
                 <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
                 <h1 style= {{marginBottom :"10px",marginLeft:"20px"}}>STUDENTS' FEEDBACKS TOOL </h1>
                     <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center" id="formContent">
                     <Card>
-                    <CardTitle>Feedback</CardTitle>
+                    <CardTitle style={{marginLeft:"10rem",marginRight:"5rem" ,size:"100px"}} className ="Card_Title">Feedback</CardTitle>
                     <CardBody>
                     <Form onSubmit={this.onSubmit} id="my-form">
-                        <Label for = "Fullname" >Full name</Label>
-                        <Input type='text' name='name' id='name' placeholder="Your full name" onChange={this.onChange}></Input>
+                        <Label for = "Fullname"  >FULLNAME</Label>
+                        <Input type='text' name='name' id='name' onChange={this.onChange} style={{backgroundColor:"#c6c7ca"}}></Input>
 
-                        <Label for = "Fullname" >Email</Label>
-                        <Input type='email' name='email' id='email' placeholder="Your email address" onChange={this.onChange}></Input>
+                        <Label for = "Email" >EMAIL</Label>
+                        <Input type='email' name='email' id='email'  onChange={this.onChange} style={{backgroundColor:"#c6c7ca"}}></Input>
                     
-                        <Label for = "StudentID" >Student ID</Label>
-                        <Input type='text' name='id' id='id' placeholder="Your student ID" onChange={this.onChange}></Input>
+                        <Label for = "StudentID" >STUDENTID</Label>
+                        <Input type='text' name='id' id='id'  onChange={this.onChange} style={{backgroundColor:"#c6c7ca"}}></Input>
                     
                         <Label for="FeedbackArea" >Your Feedback</Label>
-                        <Input type="textarea" name="feedback" id="feedback" onChange={this.onChange}/>
+                        <Input type="textarea" name="feedback" id="feedback" onChange={this.onChange} style={{width:"400px",height:"200px",backgroundColor:"#c6c7ca"}}/>
     
                     {/* <FormGroup row>
                         <Label for="File" sm={2}>File</Label>
@@ -109,7 +110,7 @@ class FeedbackModal extends Component {
                     </FormGroup>
                     <FormGroup check row>
                     <Col sm={{ size: 10, offset: 2 }}> */}
-                        <Button color ="primary">Send</Button>
+                        <Button color ="primary" style={{marginLeft:"10rem",marginRight:"5rem",marginTop:"2rem"}}>SEND</Button>
                     {/* </Col> */}
                     {/* </FormGroup> */}
                         </Form>
@@ -117,9 +118,14 @@ class FeedbackModal extends Component {
                             <a class="underlineHover" href="#">Forgot Password?</a>
                         </div> */}
                         </CardBody>
-                    <Button onClick = {this.toggle}>{<LoginModal/>}</Button>
-                        <Button onClick = {this.toggle}>{<RegisterModal/>}</Button>
+                        <p style ={{marginLeft:"12rem",marginRight:"5rem"}}>OR</p>
+                        <Button onClick = {this.toggle} color="primary" style={{marginLeft:"10rem",marginRight:"11rem",color:'white'}} active>{<LoginModal/>}</Button>
+                        <Button onClick = {this.toggle} color ="link"> {<RegisterModal  />}</Button>
                         </Card>
+                        
+                        <div >
+
+                        </div>
                     </div>
                     
                 </div>
