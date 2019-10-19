@@ -120,18 +120,20 @@ export class CMS extends Component {
                                         <p>{id}</p>
                                         <p>{email}</p>
                                         </div>
-                                        <div style={{float:"right"}}>
+                                        
                                         {Sentiment_status >0?(
-                                            <div style={{backgroundColor:"green", borderRadius:"6px",color:"white", padding:" 0 5px 0 5px"}}>Positive</div>
-                                        ):(<div style={{backgroundColor:"yellow", borderRadius:"6px",color:"white", padding:" 0 5px 0 5px"}}>Negative</div>)}
-                                        <Button className = 'remove-btn' color = 'danger' size = 'sm' onClick = {this.onDeleteClick.bind(this,_id)} style={{marginLeft:"65rem"}} >
+                                            <div style={{backgroundColor:"green", borderRadius:"6px",color:"white", padding:" 5px 0 0 5px" , marginLeft:"50rem",marginRight:"8rem"}}>Positive</div>
+                                        ):(<div style={{backgroundColor:"yellow", borderRadius:"6px",color:"white", padding:" 5px 0 0 5px", marginLeft:"50rem",marginRight:"8rem"}}>Negative</div>)}
+                                        <Button className = 'remove-btn' color = 'danger' size = 'sm' onClick = {this.onDeleteClick.bind(this,_id)} style={{marginLeft:"60rem",marginBottom:"8rem"}} >
                                                 x
                                         </Button>
-                                        <span>{date.substring(0,10)}</span>
+                                        <div style={{marginLeft:"45 rem",marginRight:"8rem"}}><span>{date.substring(0,10)}</span></div>
                                         <span sytle={{marginBottom:"2rem"}}><Response email={email}/></span>
-                                        <div style={{clear:"both"}}></div>
+                                        <div style={{clear:'left'}}/>
+                                            
                                         
-                                        </div>   
+                                        
+                                        
                                     </div>
                                     // </ListGroupItem>
                             

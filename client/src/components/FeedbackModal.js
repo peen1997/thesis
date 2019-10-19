@@ -20,6 +20,7 @@ import {addFeedback} from '../actions/feedbackAction'
 import 'bootstrap/dist/css/bootstrap.css'
 import LoginModal from './auth/LoginModal'
 import RegisterModal from './auth/RegisterModal';
+import Logo from '../Logo.PNG'
 
 
 class FeedbackModal extends Component {
@@ -73,7 +74,7 @@ class FeedbackModal extends Component {
                 <div class="col-md-6 p-0 bg-indigo h-md-100">
                     <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
                         <div class="logoarea pt-5 pb-5">
-                            First half content here
+                            <img src={Logo} alt='Logo'></img>
                         </div>
                     </div>
                 </div>
