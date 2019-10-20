@@ -18,4 +18,5 @@ CMD ['cd','..']
 
 EXPOSE 3000
 
-CMD ['npm','run','dev']
+RUN npm run dev
+
