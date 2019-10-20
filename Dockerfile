@@ -12,8 +12,10 @@ CMD ['cd','client']
 
 RUN npm install
 
+RUN npm audit fix
+
 CMD ['cd','..']
 
-EXPOSE 5000
+EXPOSE 3000
 
 CMD ['npm','run','dev']
