@@ -6,17 +6,15 @@ COPY package*.json ./
 
 RUN npm install 
 
-COPY . .
+COPY . /usr/src/app
 
-CMD ['cd','client']
+WORKDIR /usr/src/app/client
 
 RUN npm install
 
-RUN npm audit fix
-
-CMD ['cd','..']
+WORKDIR /usr/src/app
 
 EXPOSE 3000
 
-RUN npm run dev
+CMD [ "npm", "run","dev"]
 
