@@ -91,7 +91,7 @@ export class CMS extends Component {
                             <p style= {{fontSize :"100%", marginLeft:"20px",color:"#0d0d0d"}}>Use AI to automatically classify sentiment</p>
                         </th>
                         <th style={{marginRight:"1rem "}}>
-                            <Button color="primary" className='ml-auto'>{<Logout/>}</Button>
+                            <Button color="primary" className='ml-auto' style={{marginLeft:"20rem"}}>{<Logout/>}</Button>
                             
                         </th>
                     </tr>
@@ -109,31 +109,28 @@ export class CMS extends Component {
                                     
                                     // <ListGroupItem key = {_id} >
                                     <div key={_id} style={{width:"1000px",margin:"0",border:"solid grey" }}>
-                                        {this.props.isAuthenticated?(
+                                        {/* {this.props.isAuthenticated?(
                                             <Button className = 'remove-btn' color = 'danger' size = 'sm' onClick = {this.onDeleteClick.bind(this,_id)} style={{marginLeft:"65rem"}} >
                                                 x
-                                            </Button>):null}
+                                            </Button>):null} */}
                                         
-                                        <div style={{float:"left"}}>
+                                        <Button className = 'remove-btn' color = 'danger' size = 'sm' onClick = {this.onDeleteClick.bind(this,_id)} style={{marginLeft:"60rem",marginTop:'0.5rem'}} >
+                                                x
+                                        </Button>  
+                                        {Sentiment_status >0?(
+                                            <p style={{backgroundColor:"green", borderRadius:"6px",color:"white",padding:" 5px 0 0 5px" , marginLeft:"50rem",marginRight:"8rem"}}>Positive</p>
+                                        ):(<p style={{backgroundColor:"yellow", borderRadius:"6px",color:"white", padding:" 5px 0 0 5px" , marginLeft:"50rem",marginRight:"8rem"}}>Negative</p>)}
+                                        
+                                    
+                                        <span style={{marginLeft:'50rem',marginTop:'1rem'}}>{date.substring(0,10)}</span>
                                         <h4>{name}</h4>  
                                         <p>{feedback}</p>
                                         <p>{id}</p>
                                         <p>{email}</p>
-                                        </div>
-                                        
-                                        {Sentiment_status >0?(
-                                            <div style={{backgroundColor:"green", borderRadius:"6px",color:"white", padding:" 5px 0 0 5px" , marginLeft:"50rem",marginRight:"8rem"}}>Positive</div>
-                                        ):(<div style={{backgroundColor:"yellow", borderRadius:"6px",color:"white", padding:" 5px 0 0 5px", marginLeft:"50rem",marginRight:"8rem"}}>Negative</div>)}
-                                        <Button className = 'remove-btn' color = 'danger' size = 'sm' onClick = {this.onDeleteClick.bind(this,_id)} style={{marginLeft:"60rem",marginBottom:"8rem"}} >
-                                                x
-                                        </Button>
-                                        <div style={{marginLeft:"45 rem",marginRight:"8rem"}}><span>{date.substring(0,10)}</span></div>
-                                        <span sytle={{marginBottom:"2rem"}}><Response email={email}/></span>
-                                        <div style={{clear:'left'}}/>
-                                            
                                         
                                         
                                         
+                                        <Response email={email} style={{marginLeft:'70rem'}}/>
                                     </div>
                                     // </ListGroupItem>
                             

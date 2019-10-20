@@ -52,7 +52,7 @@ export class Response extends Component {
     render() {
         return (
             <div>
-                <Button onClick ={this.toggle}>Reply</Button>
+                <Button color='primary' onClick ={this.toggle} style ={{marginLeft:"55rem"}}>Reply</Button>
                 <Modal 
                     isOpen = {this.state.modal}
                     toggle = {this.toggle}
