@@ -8,13 +8,7 @@ RUN npm install
 
 COPY . /usr/src/app
 
-WORKDIR /usr/src/app/client
+EXPOSE 5000
 
-RUN npm install
-
-WORKDIR /usr/src/app
-
-EXPOSE 3000
-
-CMD [ "npm", "run","dev"]
+CMD [ "npm", "run","server"]
 
