@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
     frontend:
@@ -6,11 +6,11 @@ services:
       restart: always
       build: ./client
       ports: 
-        - "3000":"3000"
+        - "3000:3000"
     backend:
       container_name: back-container
       restart: always
       build: .
       ports:
-        - "5000":"5000"
+        - "5000:5000"
 
