@@ -1,15 +1,17 @@
 FROM node:10-alpine
 
-WORKDIR /usr/src/app/client
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
 RUN npm install 
 
-COPY . /usr/src/app/client
+RUN npm audit fix
+
+COPY . ./
 
 EXPOSE 3000
 
-WORKDIR /usr/src/app
-
-CMD ["npm","run","client"]
+CMD ["npm","start"]
